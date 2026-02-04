@@ -178,7 +178,7 @@ projects: [
             title: "Smart Event Experience Band", 
             caption: "AI-powered wearable integrating real-time data processing and sensors to enhance audience engagement at live events.",
             images: [
-                "./Images/BAND1.jpg", 
+                "./Images/band1.jpg", 
                 "./Images/BAND2.jpg"
             ], 
             link: "https://www.linkedin.com/in/asherifyehia" 
@@ -201,9 +201,9 @@ projects: [
             title: "Workshop - 3D Printer Fabrication",
             caption: "Hands-on workshop covering the design and fabrication of 3D printers.",
             images: [
-                "./Images/Workshop1.jpg",
-                "./Images/Workshop2.jpg",
-                "./Images/Workshop3.jpg"
+                "./Images/workshop1.jpg",
+                "./Images/workshop2.jpg",
+                "./Images/workshop3.jpg"
             ],
             link: "https://www.linkedin.com/in/asherifyehia"
         }
