@@ -1,254 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdelrahman Sherif | Mechatronics Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
-        :root { 
-            --primary: #4f46e5; 
-            --secondary: #0077b5; 
-            --dark: #0f172a; 
-            --gray: #64748b; 
-            --glass: rgba(255, 255, 255, 0.8);
-        }
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Abdelrahman Sherif | Mechatronics & Frontend Portfolio</title>
+      
+      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+      
+      <style>
+         :root {
+             --primary: #6366f1;
+             --accent: #06b6d4;
+             --dark: #0f172a;
+             --text-main: #1e293b;
+             --text-dim: #64748b;
+             --glass: rgba(255, 255, 255, 0.85);
+             --gradient: linear-gradient(135deg, #0f172a 0%, #6366f1 90%);
+         }
 
-        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        
-        html { scroll-behavior: smooth; }
-        
-        body { 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            background: #f8fafc; 
-            color: var(--dark); 
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+         * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
+         html { scroll-behavior: smooth; }
+         body { font-family: 'Inter', sans-serif; margin: 0; background: #fdfdfd; color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
 
-        /* Animated Background */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(125deg, #f8fafc 0%, #eef2ff 100%);
-            z-index: -1;
-        }
+         /* Navigation */
+         nav { position: sticky; top: 0; background: var(--glass); backdrop-filter: blur(15px); padding: 1rem 8%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
+         .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.3rem; color: var(--dark); letter-spacing: -1px; }
+         .nav-links a { text-decoration: none; color: var(--text-dim); margin-left: 25px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+         .nav-links a:hover { color: var(--primary); }
 
-        nav { 
-            position: sticky; top: 0; 
-            background: var(--glass); 
-            backdrop-filter: blur(12px); 
-            padding: 1rem 10%; 
-            display: flex; justify-content: space-between; 
-            z-index: 1000; 
-            border-bottom: 1px solid rgba(0,0,0,0.05); 
-        }
-
-        /* Hero Layout with Photo */
-        .hero { 
-            min-height: 80vh; 
-            padding: 80px 10%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            gap: 40px;
-        }
-        
-        .hero-text { flex: 1; }
-        
-        .hero h1 { 
+         /* Hero Section */
+         .hero { min-height: 90vh; padding: 0 10%; display: flex; align-items: center; justify-content: space-between; gap: 60px; }
+         .hero-text { flex: 1.2; }
+         .hero h1 { 
             font-family: 'Space Grotesk', sans-serif; 
-            font-size: clamp(2.5rem, 5vw, 4rem); 
-            margin: 0; line-height: 1.1; 
-            background: linear-gradient(90deg, var(--dark), var(--primary));
+            font-size: clamp(3rem, 6vw, 5rem); 
+            margin: 0; 
+            line-height: 1; 
+            letter-spacing: -2px;
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .hero-img-container {
-            flex: 0 0 350px;
-            height: 350px;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            background: var(--primary);
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.2);
-            animation: morph 8s ease-in-out infinite;
-        }
-
-        @keyframes morph {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
-            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-        }
-
-        .hero-img-container img {
-            width: 100%; height: 100%; object-fit: cover;
-        }
-
-        .section { padding: 100px 10%; }
-        
-        /* Modern Cards */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
-        
-        .card { 
-            background: var(--glass); 
-            padding: 2.5rem; 
-            border-radius: 24px; 
-            border: 1px solid rgba(255,255,255,0.4); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-        }
-        
-        .card:hover { 
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            border-color: var(--primary);
-        }
-
-        /* Gallery */
-        .gallery-feed { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-        
-        .gallery-item { 
-            border-radius: 20px; 
+         }
+         .hero p { font-size: 1.25rem; color: var(--text-dim); margin: 25px 0; max-width: 600px; font-weight: 300; }
+         
+         /* Morphing Frame */
+         .hero-img-container { 
+            flex: 0 0 400px; 
+            height: 400px; 
+            background: var(--primary); 
             overflow: hidden; 
-            aspect-ratio: 1 / 1; 
-            position: relative; 
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+            animation: morph 8s ease-in-out infinite;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+         }
+         @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+         }
+         .hero-img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+         /* Standard Layouts */
+         .section { padding: 100px 10%; }
+         .section-title { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; margin-bottom: 50px; color: var(--dark); letter-spacing: -1px; }
+         .tag { background: #f1f5f9; color: var(--primary); padding: 5px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 10px; }
+
+         /* Experience Cards */
+         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+         .card { background: white; padding: 2.5rem; border-radius: 24px; border: 1px solid #f1f5f9; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+         .card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+
+         /* Timeline */
+         .evolution-container { position: relative; max-width: 800px; margin: 0 auto; }
+         .evolution-container::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 2px; height: 100%; background: #e2e8f0; }
+         .evolution-item { width: 50%; padding: 20px 40px; position: relative; }
+         .evolution-item::after { content: ''; position: absolute; width: 10px; height: 10px; border: 3px solid var(--primary); background: white; border-radius: 50%; top: 25px; right: -8px; z-index: 2; }
+         .evolution-item.right { margin-left: 50%; }
+         .evolution-item.right::after { left: -8px; }
+         .evolution-content { background: white; padding: 25px; border-radius: 20px; border: 1px solid #f1f5f9; cursor: pointer; display: block; text-decoration: none; color: inherit; }
+         .evolution-content:hover { border-color: var(--primary); transform: scale(1.02); }
+
+         /* Feed Style Gallery */
+         .gallery-feed { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+         .gallery-item { border-radius: 20px; overflow: hidden; aspect-ratio: 1/1; position: relative; cursor: pointer; }
+         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+         .gallery-overlay { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.85); display: flex; flex-direction: column; justify-content: center; padding: 25px; color: white; opacity: 0; }
+         .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+         /* Certifications */
+         .cert-card { 
+    background: var(--dark); 
+    color: white; 
+    padding: 2.5rem; 
+    border-radius: 24px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    position: relative; /* Required for the icon positioning */
+    overflow: hidden; /* Clips the large icon so it doesn't spill out */
+    height: 100%;
+}
+
+.cert-card::before { 
+    content: '\f1c1'; /* Font Awesome PDF Icon Code */
+    font-family: 'Font Awesome 6 Free'; 
+    font-weight: 900; 
+    position: absolute; 
+    right: -20px; 
+    top: -20px; 
+    font-size: 10rem; /* Makes it big */
+    opacity: 0.07; /* Makes it subtle */
+    transform: rotate(-15deg); /* Adds a stylish tilt */
+    pointer-events: none; /* Ensures you can still click the buttons */
+}
+         .pdf-btn { background: var(--primary); color: white; padding: 12px 20px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 8px; width: fit-content; margin-top: 20px; }
+         .pdf-btn:hover { background: white; color: var(--dark); }
+
+         /* Skills Section */
+         .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; }
+         .skill-card { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 24px; 
+            border: 2px solid #e2e8f0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center;
+            position: relative;
+            overflow: hidden;
             cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+         }
+         .skill-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+         }
+         .skill-card:hover::before { opacity: 0.1; }
+         .skill-icon { 
+            font-size: 3rem; 
+            margin-bottom: 1rem; 
+            color: var(--primary);
+            animation: float 3s ease-in-out infinite;
+         }
+         .skill-icon.level-5 { color: #22c55e; }
+         .skill-icon.level-4 { color: #fbbf24; }
+         .skill-icon.level-3 { color: #eab308; }
+         .skill-icon.level-2 { color: #f97316; }
+         .skill-icon.level-1 { color: #ef4444; }
+         .skill-card:hover .skill-icon { animation: bounce 0.6s ease-in-out; }
+         .skill-name { 
+            font-family: 'Space Grotesk', sans-serif; 
+            font-weight: 600; 
+            font-size: 1.1rem; 
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+         }
+         .skill-level {
+            display: flex;
+            gap: 4px;
+            justify-content: center;
+            margin-top: 0.5rem;
+         }
+         .skill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            transition: all 0.3s ease;
         }
+         .skill-dot.level-5 { background: #22c55e; }
+         .skill-dot.level-4 { background: #fbbf24; }
+         .skill-dot.level-3 { background: #eab308; }
+         .skill-dot.level-2 { background: #f97316; }
+         .skill-dot.level-1 { background: #ef4444; }
+         .skill-card:hover .skill-dot { 
+            transform: scale(1.3);
+         }
 
-        .gallery-overlay {
-            position: absolute; inset: 0;
-            background: rgba(15, 23, 42, 0.9);
-            display: flex; flex-direction: column; justify-content: center;
-            padding: 20px; color: white; opacity: 0;
-        }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
+         @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+         }
+         @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+         }
 
-        footer { background: var(--dark); color: white; padding: 60px 10%; text-align: center; }
-        
-        .tag { 
-            background: #e0e7ff; color: var(--primary); 
-            padding: 6px 16px; border-radius: 50px; 
-            font-size: 0.8rem; font-weight: 700; 
-            margin-bottom: 1.5rem; display: inline-block;
-        }
+         /* Modal */
+         .modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(15px); z-index: 2000; align-items: center; justify-content: center; padding: 20px; }
+         .modal.active { display: flex; }
+         .modal-content { max-width: 1000px; width: 100%; color: white; position: relative; text-align: center; }
+         .modal-slides { display: flex; overflow-x: hidden; scroll-behavior: smooth; gap: 20px; padding: 30px 0; scroll-snap-type: x mandatory; }
+         .modal-slides img { height: 60vh; border-radius: 20px; flex-shrink: 0; scroll-snap-align: center; }
+         .nav-btn { background: rgba(255,255,255,0.1); border: none; color: white; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); }
+         .prev { left: -70px; } .next { right: -70px; }
+         .close-modal { position: absolute; top: -50px; right: 0; font-size: 2.5rem; cursor: pointer; }
 
-        @media (max-width: 900px) {
-            .hero { flex-direction: column-reverse; text-align: center; padding-top: 40px; }
-            .hero-img-container { flex: 0 0 280px; height: 280px; }
-        }
-    </style>
-</head>
-<body>
+         footer { background: #000; color: #64748b; padding: 80px 10%; text-align: center; }
 
-<nav>
-    <div style="font-weight: 700; font-size: 1.2rem; color: var(--primary);">A.SHERIF</div>
-    <div id="nav-links">
-        <a href="#experience" style="margin-left:20px; text-decoration:none; color:inherit; font-weight:500;">Experience</a>
-        <a href="#projects" style="margin-left:20px; text-decoration:none; color:inherit; font-weight:500;">Projects</a>
-        <a href="#gallery" style="margin-left:20px; text-decoration:none; color:inherit; font-weight:500;">Feed</a>
-    </div>
-</nav>
+         @media (max-width: 900px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 60px; }
+            .hero-img-container { flex: 0 0 280px; height: 280px; margin: 0 auto; }
+            .evolution-container::before { left: 20px; }
+            .evolution-item { width: 100%; padding-left: 50px; text-align: left !important; }
+            .evolution-item.right { margin-left: 0; }
+            .evolution-item::after { left: 15px !important; }
+            .nav-links { display: none; }
+            .prev { left: 10px; } .next { right: 10px; }
+         }
+      </style>
+   </head>
+   <body>
+      <nav>
+         <div class="logo">A.SHERIF</div>
+         <div class="nav-links">
+            <a href="#experience">Experience</a>
+            <a href="#evolution">Projects</a>
+            <a href="#gallery">Feed</a>
+            <a href="#certifications">Certificates</a>
+         </div>
+      </nav>
 
-<section class="hero" id="hero-target">
-    <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
-        </div>
-    <div class="hero-img-container" data-aos="zoom-in" data-aos-duration="1200">
-        <img src="./Pro1.jpg" id="profile-img" alt="Abdelrahman Sherif">
-    </div>
-</section>
+      <section class="hero">
+         <div class="hero-text" data-aos="fade-right">
+            <span class="tag">Mechatronics Engineer | AAST-SV</span>
+            <h1 id="hero-title"></h1>
+            <p id="hero-summary"></p>
+         </div>
+         <div class="hero-img-container" data-aos="zoom-in">
+            <img src="./Pro1.jpg" id="profile-img" alt="Profile" />
+         </div>
+      </section>
 
-<section class="section" id="experience">
-    <h2 data-aos="fade-up">Professional Experience</h2>
-    <div class="grid" id="experience-target" data-aos="fade-up"></div>
-</section>
+      <section class="section" id="experience">
+         <h2 class="section-title" data-aos="fade-up">Professional Experience</h2>
+         <div class="grid" id="experience-target"></div>
+      </section>
 
-<section class="section" id="projects">
-    <h2 data-aos="fade-up">Engineering Milestones</h2>
-    <div class="grid" id="project-target" data-aos="fade-up"></div>
-</section>
+      <section class="section" id="skills" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);">
+         <h2 class="section-title" data-aos="fade-up">Technical Arsenal</h2>
+         <div class="skills-container" id="skills-target"></div>
+      </section>
 
-<section class="section" id="gallery" style="background: rgba(241, 245, 249, 0.5);">
-    <h2 data-aos="fade-up">Feed</h2>
-    <div class="gallery-feed" id="gallery-target" data-aos="fade-up"></div>
-</section>
+      <section class="section" id="gallery">
+         <h2 class="section-title" data-aos="fade-up">Engineering Feed</h2>
+         <div class="gallery-feed" id="gallery-target"></div>
+      </section>
 
-<footer id="footer-target"></footer>
+      <section class="section" id="certifications">
+         <h2 class="section-title" data-aos="fade-up">Certifications</h2>
+         <div class="grid" id="certifications-target"></div>
+      </section>
 
-<script src="data.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <section class="section" id="evolution" style="background: #f8fafc">
+         <h2 class="section-title" data-aos="fade-up">Technical Evolution</h2>
+         <div class="evolution-container" id="evolution-target"></div>
+      </section>
 
-<script>
-    // Initialize Animations
-    AOS.init({ once: false, mirror: true });
 
-    // Update Photo from Data
-    if(PORTFOLIO_DATA.profileImg) {
-        document.getElementById('profile-img').src = PORTFOLIO_DATA.profileImg;
-    }
-
-    // Build Hero
-    document.querySelector('.hero-text').innerHTML = `
-        <div class="tag">Mechatronics Engineer | AAST-SV</div>
-        <h1>${PORTFOLIO_DATA.heroTitle}</h1>
-        <p style="font-size: 1.2rem; color: var(--gray); margin-top: 20px;">${PORTFOLIO_DATA.heroSummary}</p>
-        <div style="margin-top: 30px;">
-            <a href="#experience" class="ln-btn" style="padding: 15px 35px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; display: inline-block;">View My Journey</a>
-        </div>
-    `;
-
-    // Build Experience
-    const eTarget = document.getElementById('experience-target');
-    PORTFOLIO_DATA.experience.forEach((e, i) => {
-        eTarget.innerHTML += `
-            <div class="card" data-aos="fade-up" data-aos-delay="${i * 100}">
-                <h3 style="margin-top:0;">${e.role}</h3>
-                <p style="color: var(--primary); font-weight: 600;">${e.company}</p>
-                <p style="font-size: 0.9rem; color: var(--gray);">${e.description}</p>
-            </div>
-        `;
-    });
-
-    // Build Projects
-    const pTarget = document.getElementById('project-target');
-    PORTFOLIO_DATA.projects.forEach((p, i) => {
-        pTarget.innerHTML += `
-            <div class="card" data-aos="fade-up" data-aos-delay="${i * 100}">
-                <span class="tag">${p.tag}</span>
-                <h3>${p.title}</h3>
-                <p style="font-size: 0.9rem; color: var(--gray);">${p.description}</p>
-            </div>
-        `;
-    });
-
-    // Build Clickable Gallery
-    const gTarget = document.getElementById('gallery-target');
-    PORTFOLIO_DATA.gallery.forEach((g, i) => {
-        gTarget.innerHTML += `
-            <a href="${g.link}" target="_blank" class="gallery-item" data-aos="zoom-in" data-aos-delay="${i * 50}">
-                <img src="${g.imgUrl}" alt="${g.title}" style="width:100%; height:100%; object-fit:cover;">
-                <div class="gallery-overlay">
-                    <div style="font-weight:700; font-size:1rem;">${g.title}</div>
-                    <div style="font-size:0.8rem; margin-top:5px; opacity:0.8;">${g.caption}</div>
-                    <div style="margin-top:15px; color:#38bdf8; font-size:0.8rem;"><i class="fab fa-linkedin"></i> View on LinkedIn</div>
-                </div>
+      <div class="modal" id="lightbox">
+         <div class="modal-content">
+            <span class="close-modal" onclick="closeLightbox()">&times;</span>
+            <button class="nav-btn prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="nav-btn next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+            <h2 id="modal-title" style="font-family: 'Space Grotesk';"></h2>
+            <p id="modal-caption" style="opacity: 0.7; margin-bottom: 20px;"></p>
+            <div class="modal-slides" id="modal-slides"></div>
+            <a href="#" id="modal-link" target="_blank" style="background: #0077b5; padding: 12px 25px; border-radius: 8px; color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; margin-top: 20px;">
+               <i class="fab fa-linkedin"></i> View on LinkedIn
             </a>
-        `;
-    });
+         </div>
+      </div>
 
-    // Build Footer
-    document.getElementById('footer-target').innerHTML = `
-        <p style="font-weight: 700; font-size: 1.2rem;">${PORTFOLIO_DATA.name}</p>
-        <p style="opacity: 0.7;">${PORTFOLIO_DATA.contactEmail}</p>
-        <div style="margin-top: 20px;">
-            <a href="${PORTFOLIO_DATA.linkedinUrl}" style="color: white; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
-        </div>
-    `;
-</script>
+      <footer id="footer-target"></footer>
 
-</body>
+      <script src="data.js"></script>
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script>
+         AOS.init({ duration: 1000, once: true });
+
+         // Load Hero
+         document.getElementById("hero-title").innerText = PORTFOLIO_DATA.heroTitle;
+         document.getElementById("hero-summary").innerText = PORTFOLIO_DATA.heroSummary;
+         document.getElementById("profile-img").src = PORTFOLIO_DATA.profileImg;
+
+         // Experience
+         const eTarget = document.getElementById("experience-target");
+         PORTFOLIO_DATA.experience.forEach((e, i) => {
+            eTarget.innerHTML += `
+               <div class="card" data-aos="fade-up" data-aos-delay="${i*100}">
+                  <span class="tag">${e.year}</span>
+                  <h3 style="margin: 10px 0; font-family: 'Space Grotesk';">${e.role}</h3>
+                  <p style="color:var(--primary); font-weight:600; margin-bottom:10px;">${e.company}</p>
+                  <p style="font-size:0.9rem; color:var(--text-dim);">${e.description}</p>
+               </div>
+            `;
+         });
+
+         // Skills
+         const sTarget = document.getElementById("skills-target");
+         PORTFOLIO_DATA.skills.forEach((s, i) => {
+            const dots = Array(5).fill(0).map((_, idx) => {
+               const level = idx + 1;
+               const isActive = level <= s.level;
+               return `<div class="skill-dot ${isActive ? `level-${level}` : ''}"></div>`;
+            }).join('');
+            sTarget.innerHTML += `
+               <div class="skill-card" data-aos="zoom-in" data-aos-delay="${i*50}">
+                  <div class="skill-icon level-${s.level}">${s.icon}</div>
+                  <div class="skill-name">${s.name}</div>
+                  <div class="skill-level">${dots}</div>
+               </div>
+            `;
+         });
+
+         // Evolution
+         const evoTarget = document.getElementById("evolution-target");
+         PORTFOLIO_DATA.projects.forEach((p, i) => {
+            const side = i % 2 === 0 ? "left" : "right";
+            const gIdx = PORTFOLIO_DATA.gallery.findIndex(g => g.id === p.id);
+            const techTags = p.tech ? p.tech.map(t => `<span class="tag" style="margin-right: 5px; margin-bottom: 5px;">${t}</span>`).join('') : '';
+            evoTarget.innerHTML += `
+               <div class="evolution-item ${side}" data-aos="fade-${side}">
+                  <div class="evolution-content" ${gIdx !== -1 ? `onclick="openLightbox(${gIdx})"` : ""}>
+                     <span class="tag">${p.tag}</span>
+                     <h3 style="margin:10px 0; font-family: 'Space Grotesk';">${p.title}</h3>
+                     <p style="font-size:0.85rem; color:var(--text-dim);">${p.description}</p>
+                     ${techTags ? `<div style="margin-top: 10px; display: flex; flex-wrap: wrap;">${techTags}</div>` : ''}
+                  </div>
+               </div>
+            `;
+         });
+
+         // Feed Style Gallery
+         const gTarget = document.getElementById("gallery-target");
+         PORTFOLIO_DATA.gallery.forEach((g, i) => {
+            gTarget.innerHTML += `
+               <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(${i})">
+                  <img src="${g.images[0]}" alt="${g.title}">
+                  <div class="gallery-overlay">
+                     <strong style="font-size:1.1rem;">${g.title}</strong>
+                     <span style="font-size:0.85rem; margin-top:5px; opacity:0.9;">${g.caption}</span>
+                     <small style="margin-top:15px; color:var(--accent); font-weight:600;">
+                        <i class="fas fa-images"></i> View ${g.images.length} Photos
+                     </small>
+                  </div>
+               </div>
+            `;
+         });
+
+         // Certifications
+         const cTarget = document.getElementById("certifications-target");
+         PORTFOLIO_DATA.certifications.forEach((c, i) => {
+            cTarget.innerHTML += `
+               <div class="cert-card" data-aos="fade-up" data-aos-delay="${i*100}">
+                  <div>
+                     <span class="tag" style="background: rgba(255,255,255,0.1); color: white;">${c.issuer}</span>
+                     <h3 style="font-family: 'Space Grotesk'; margin: 15px 0 10px 0;">${c.title}</h3>
+                     <p style="font-size:0.85rem; opacity:0.7;">${c.description}</p>
+                  </div>
+                  <a href="${c.pdfLink || '#'}" target="_blank" class="pdf-btn">
+                     <i class="fas fa-file-pdf"></i> View Certificate
+                  </a>
+               </div>
+            `;
+         });
+
+         // Lightbox
+         function openLightbox(idx) {
+            const item = PORTFOLIO_DATA.gallery[idx];
+            document.getElementById("modal-title").innerText = item.title;
+            document.getElementById("modal-caption").innerText = item.caption;
+            const slides = document.getElementById("modal-slides");
+            slides.innerHTML = item.images.map(src => `<img src="${src}">`).join("");
+            
+            // Set LinkedIn button
+            const linkBtn = document.getElementById("modal-link");
+            if (item.link) {
+               linkBtn.href = item.link;
+               linkBtn.style.display = "inline-flex";
+            } else {
+               linkBtn.style.display = "none";
+            }
+            
+            document.getElementById("lightbox").classList.add("active");
+            document.body.style.overflow = "hidden";
+            slides.scrollLeft = 0;
+         }
+
+         function closeLightbox() {
+            document.getElementById("lightbox").classList.remove("active");
+            document.body.style.overflow = "auto";
+         }
+
+         function changeSlide(dir) {
+            const slides = document.getElementById("modal-slides");
+            slides.scrollBy({ left: dir * (slides.clientWidth * 0.8), behavior: 'smooth' });
+         }
+
+         // Footer
+         document.getElementById("footer-target").innerHTML = `
+            <p><strong>&copy; 2026 ${PORTFOLIO_DATA.name}</strong></p>
+            <p style="margin: 15px 0;">${PORTFOLIO_DATA.contactEmail}</p>
+            <a href="${PORTFOLIO_DATA.linkedinUrl}" style="color:white; font-size:1.5rem;"><i class="fab fa-linkedin"></i></a>
+         `;
+      </script>
+   </body>
 </html>
