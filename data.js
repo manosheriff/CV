@@ -230,3 +230,4 @@ projects: [
         { name: "vfx editing", icon: "<i class='fas fa-video'></i>", level: 1 }
     ]
 };
+
