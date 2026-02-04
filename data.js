@@ -1,5 +1,5 @@
 const PORTFOLIO_DATA = {
-    profileImg: "../images/Pro1.jpg", 
+    profileImg: "images/Pro1.jpg", 
     name: "Abdelrahman Sherif",
     heroTitle: "Abdelrahman Sherif",
     heroSummary: "Bilingual mechatronics Engineer (AAST-SV) & Frontend Developer. Expert in 3D fabrication, autonomous robotics, and Next.js architecture.",
@@ -231,3 +231,4 @@ projects: [
     ]
 
 };
+
