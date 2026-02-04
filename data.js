@@ -54,7 +54,7 @@ const PORTFOLIO_DATA = {
             issuer: "AAST-SV",
             date: "2023",
             description: "Led hands-on training for students on custom 3D printer design, manufacturing, and optimization.",
-            pdfLink:"./Documents/Certificate-Instructor-3d printer.pdf"
+            pdfLink:"./Documents/instructor.pdf"
         },
         {
             title: "ASME EFx 2024 - 2nd Place Winner",
@@ -230,6 +230,7 @@ projects: [
         { name: "vfx editing", icon: "<i class='fas fa-video'></i>", level: 1 }
     ]
 };
+
 
 
 
