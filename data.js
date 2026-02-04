@@ -47,28 +47,28 @@ const PORTFOLIO_DATA = {
             issuer: "https://scai.sa/",
             date: "2025",
             description: "Developed an AI-powered wearable integrating real-time data processing and sensors to enhance audience engagement at live events.",
-            pdfLink:"./documents/SCAI.pdf"
+            pdfLink:"./Documents/SCAI.pdf"
         },
         {
             title: "3D Printing Workshop Instructor",
             issuer: "AAST-SV",
             date: "2023",
             description: "Led hands-on training for students on custom 3D printer design, manufacturing, and optimization.",
-            pdfLink:"./documents/Certificate-Instructor-3d printer.pdf"
+            pdfLink:"./Documents/Certificate-Instructor-3d printer.pdf"
         },
         {
             title: "ASME EFx 2024 - 2nd Place Winner",
             issuer: "ASME",
             date: "2024",
             description: "Secured 2nd place at ASME EFx Cairo 2024 for innovation and real-world impact with a pneumatic flexible robot for disaster zones.",
-            pdfLink:"./documents/EFX.pdf"
+            pdfLink:"./Documents/EFX.pdf"
         },
         {
             title: "Ghabour Engine overhaul Training",
             issuer: "Ghabour Academy",
             date: "2023",
             description: "Completed intensive training on Ghabour engine systems, diagnostics, and overhaul procedures.",
-            pdfLink:"./documents/GHAB1.pdf"
+            pdfLink:"./Documents/GHAB1.pdf"
         },
     ],
     // TECHNICAL EVOLUTION (Milestones)
@@ -230,5 +230,6 @@ projects: [
         { name: "vfx editing", icon: "<i class='fas fa-video'></i>", level: 1 }
     ]
 };
+
 
 
